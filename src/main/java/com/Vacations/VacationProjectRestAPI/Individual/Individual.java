@@ -1,4 +1,4 @@
-package com.Vacations.VacationProject.Individual;
+package com.Vacations.VacationProjectRestAPI.Individual;
 
 import jakarta.persistence.*;
 import lombok.*;

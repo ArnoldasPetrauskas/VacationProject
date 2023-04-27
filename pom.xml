@@ -9,7 +9,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.Vacations</groupId>
-	<artifactId>VacationProject</artifactId>
+	<artifactId>VacationProjectRestAPI</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>VacationProject</name>
 	<description>Kursinis darbas</description>

@@ -1,4 +1,4 @@
-package com.Vacations.VacationProject.Destination;
+package com.Vacations.VacationProjectRestAPI.Destination;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;

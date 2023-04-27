@@ -1,7 +1,6 @@
-package com.Vacations.VacationProject.Persistance;
+package com.Vacations.VacationProjectRestAPI.Persistance;
 
-import com.Vacations.VacationProject.Destination.Destination;
-import com.Vacations.VacationProject.Individual.Individual;
+import com.Vacations.VacationProjectRestAPI.Destination.Destination;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,8 +9,6 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
