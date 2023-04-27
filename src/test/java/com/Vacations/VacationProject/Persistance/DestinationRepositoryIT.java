@@ -31,6 +31,8 @@ public class DestinationRepositoryIT {
                 0,
                 "title",
                 "small description",
+                "country",
+                "city",
                 LocalDate.parse("2000-10-01"),
                 LocalDate.parse("2000-10-10"),
                 2000.0

@@ -1,17 +1,14 @@
-package com.Vacations.VacationProject.User;
+package com.Vacations.VacationProject.Individual;
 
 import jakarta.persistence.*;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.NonNull;
-import lombok.RequiredArgsConstructor;
+import lombok.*;
 
 @Entity
-@RequiredArgsConstructor
+@AllArgsConstructor
 @NoArgsConstructor
 @Data
-@Table(name = "users")
-public class User {
+@Table(name = "individuals")
+public class Individual {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -27,5 +24,6 @@ public class User {
 
     @NonNull
     @Column(nullable = false)
-    private String role;
+    private String role = "USER";
+
 }
