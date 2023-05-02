@@ -1,6 +1,6 @@
 package com.Vacations.VacationProjectRestAPI.Persistance;
 
-import com.Vacations.VacationProjectRestAPI.Individual.Individual;
+import com.Vacations.VacationProjectRestAPI.Individual.Customer;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +22,7 @@ public class IndividualRepositoryIT{
 
     @Test
     public void whenIndividualIsCreated_theyArePersisted(){
-        var individual = new Individual(
+        var individual = new Customer(
                 0,
                 "name",
                 "password",
@@ -30,7 +30,7 @@ public class IndividualRepositoryIT{
         );
 
         var savedIndividual = repository.save(individual);
-        var persistedIndividual = entityManager.find(Individual.class, savedIndividual.getId());
+        var persistedIndividual = entityManager.find(Customer.class, savedIndividual.getId());
         assertEquals(persistedIndividual, savedIndividual);
     }
 }

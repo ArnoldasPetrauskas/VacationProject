@@ -1,4 +1,4 @@
-package com.Vacations.VacationProjectRestAPI.Individual;
+package com.Vacations.VacationProjectRestAPI.Entities;
 
 import jakarta.persistence.*;
 import lombok.*;
@@ -7,8 +7,8 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-@Table(name = "individuals")
-public class Individual {
+@Table(name = "customers")
+public class Customer {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -16,7 +16,7 @@ public class Individual {
 
     @NonNull
     @Column(nullable = false, unique = true, length = 30)
-    private String username;
+    private String customerName;
 
     @NonNull
     @Column(nullable = false, unique = true)
