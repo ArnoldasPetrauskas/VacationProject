@@ -1,5 +1,6 @@
 package com.Vacations.VacationProjectRestAPI.Persistance;
 
+import com.Vacations.VacationProjectRestAPI.Entities.Organizer;
 import com.Vacations.VacationProjectRestAPI.Entities.Vacation;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -14,18 +15,19 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @ExtendWith(SpringExtension.class)
 @DataJpaTest
-public class DestinationRepositoryIT {
+public class VacationRepositoryIT {
 
     @Autowired
     private TestEntityManager entityManager;
-
     @Autowired
-    private VacationRepository repository;
+    private OrganizerRepository organizerRepository;
+    @Autowired
+    private VacationRepository vacationRepository;
 
     @Test
-    public void whenIndividualIsCreated_theyArePersisted(){
-        var destination = new Vacation(
-                0,
+    public void whenVacationIsCreated_theyArePersisted(){
+        var organizer = new Organizer("Organizer");
+        var vacation = new Vacation(
                 "title",
                 "small description",
                 "country",
@@ -35,8 +37,11 @@ public class DestinationRepositoryIT {
                 2000.0
         );
 
-        var savedDestination = repository.save(destination);
-        var persistedDestination = entityManager.find(Vacation.class, savedDestination.getId());
-        assertEquals(persistedDestination, savedDestination);
+        organizer.addVacation(vacation);
+        organizerRepository.save(organizer);
+
+        var savedVacation = vacationRepository.save(vacation);
+        var persistedVacation = entityManager.find(Vacation.class, savedVacation.getId());
+        assertEquals(persistedVacation, savedVacation);
     }
 }

@@ -15,29 +15,22 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @ExtendWith(SpringExtension.class)
 @DataJpaTest
-public class VacationRepositoryIT {
+public class OrganizerRepositoryIT {
 
     @Autowired
     private TestEntityManager entityManager;
 
     @Autowired
-    private VacationRepository repository;
+    private OrganizerRepository repository;
 
     @Test
-    public void whenIndividualIsCreated_theyArePersisted(){
-        var destination = new Vacation(
-                0,
-                "title",
-                "small description",
-                "country",
-                "city",
-                LocalDate.parse("2000-10-01"),
-                LocalDate.parse("2000-10-10"),
-                2000.0
+    public void whenOrganizerIsCreated_theyArePersisted(){
+        var organizer = new Organizer(
+               "Organizer"
         );
 
-        var savedVacation = repository.save(destination);
-        var persistedDestination = entityManager.find(Vacation.class, savedVacation.getId());
-        assertEquals(persistedDestination, savedVacation);
+        var savedOrganizer = repository.save(organizer);
+        var persistedOrganizer = entityManager.find(Organizer.class, savedOrganizer.getId());
+        assertEquals(persistedOrganizer, savedOrganizer);
     }
 }
