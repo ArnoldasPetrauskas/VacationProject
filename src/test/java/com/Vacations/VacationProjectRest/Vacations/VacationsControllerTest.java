@@ -4,6 +4,7 @@ package com.Vacations.VacationProjectRest.Vacations;
 import com.Vacations.VacationProjectRest.Controllers.VacationsController;
 import com.Vacations.VacationProjectRest.Entities.Vacation;
 import com.Vacations.VacationProjectRest.Entities.Vacations;
+import com.Vacations.VacationProjectRest.Services.VacationService;
 import org.junit.jupiter.api.Test;
 import org.springframework.http.HttpStatus;
 
@@ -21,7 +22,7 @@ public class VacationsControllerTest {
     public VacationsControllerTest() {
         this.vacations = new Vacations(loadTestVacations());
         FakeVacationRepository vacationRepository = new FakeVacationRepository(vacations.getVacations());
-        this.vacationsController = new VacationsController(vacationRepository);
+        this.vacationsController = new VacationsController(new VacationService(vacationRepository));
     }
 
     private List<Vacation> loadTestVacations() {
@@ -79,6 +80,4 @@ public class VacationsControllerTest {
                 vacationsController.vacationById(1).getBody());
         assertEquals(vacationsController.vacationById(1).getStatusCode(), HttpStatus.OK);
     }
-
-
 }
