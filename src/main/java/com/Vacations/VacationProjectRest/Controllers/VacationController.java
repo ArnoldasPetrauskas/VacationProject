@@ -1,4 +1,4 @@
-package com.Vacations.VacationProjectRestAPI.Controllers;
+package com.Vacations.VacationProjectRest.Controllers;
 
 import org.springframework.stereotype.Controller;
 

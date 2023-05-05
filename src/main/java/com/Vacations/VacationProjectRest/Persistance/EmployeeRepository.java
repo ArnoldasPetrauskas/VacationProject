@@ -1,6 +1,6 @@
-package com.Vacations.VacationProjectRestAPI.Persistance;
+package com.Vacations.VacationProjectRest.Persistance;
 
-import com.Vacations.VacationProjectRestAPI.Entities.Employee;
+import com.Vacations.VacationProjectRest.Entities.Employee;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

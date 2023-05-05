@@ -1,7 +1,7 @@
-package com.Vacations.VacationProjectRestAPI.Persistance;
+package com.Vacations.VacationProjectRest.Persistance;
 
-import com.Vacations.VacationProjectRestAPI.Entities.Organizer;
-import com.Vacations.VacationProjectRestAPI.Entities.Vacation;
+import com.Vacations.VacationProjectRest.Entities.Organizer;
+import com.Vacations.VacationProjectRest.Entities.Vacation;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
