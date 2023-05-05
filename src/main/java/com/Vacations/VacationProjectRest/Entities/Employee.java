@@ -23,5 +23,4 @@ public class Employee {
     @NonNull
     private String role = "USER";
 
-
 }

@@ -79,6 +79,9 @@ public class Vacation {
         this.price = price;
     }
 
+    public void setId(int id){
+        this.id = id;
+    }
     public Integer getId() {
         return id;
     }
