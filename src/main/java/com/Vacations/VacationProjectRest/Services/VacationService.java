@@ -23,4 +23,11 @@ public class VacationService {
     public Vacation findById(int vacationId) {
         return vacationRepository.findById(vacationId);
     }
+    public void save(Vacation vacation){
+        vacationRepository.save(vacation);
+    }
+
+    public void saveAll(List<Vacation> vacationList){
+        vacationRepository.saveAll(vacationList);
+    }
 }

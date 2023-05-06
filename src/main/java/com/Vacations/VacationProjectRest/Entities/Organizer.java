@@ -25,9 +25,9 @@ public class Organizer {
     @OneToMany(mappedBy = "organizer",
             fetch = FetchType.LAZY,
             cascade = CascadeType.ALL)
-    private Set<Vacation> vacations =new HashSet<>();
+    private Set<Vacation> vacations = new HashSet<>();
 
-    public void addVacation(Vacation vacation){
+    public void addVacation(Vacation vacation) {
         vacations.add(vacation);
         vacation.setOrganizer(this);
     }

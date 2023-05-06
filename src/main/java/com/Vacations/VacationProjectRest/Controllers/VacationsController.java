@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.List;
 
@@ -33,5 +34,9 @@ public class VacationsController {
                 vacationService.findById(vacationId),
                 HttpStatus.OK
         );
+    }
+    @PostMapping("/vacations/vacation/new")
+    public ResponseEntity<HttpStatus> saveVacation(){
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 }

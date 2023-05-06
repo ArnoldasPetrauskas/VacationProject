@@ -80,4 +80,12 @@ public class VacationsControllerTest {
                 vacationsController.vacationById(1).getBody());
         assertEquals(vacationsController.vacationById(1).getStatusCode(), HttpStatus.OK);
     }
+
+    @Test
+    void failsToRetrieveNonExistentVacation(){
+        assertThrows(
+                NullPointerException.class,
+                () -> vacationsController.vacationById(0)
+        );
+    }
 }
