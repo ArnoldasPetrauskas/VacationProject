@@ -1,6 +1,7 @@
 package com.Vacations.VacationProjectRest.Entities;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -42,7 +43,7 @@ public class Vacation {
     @Column
     @NonNull
     private Double price;
-
+    @JsonIgnore
     @ToString.Exclude
     @EqualsAndHashCode.Exclude
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
@@ -61,6 +62,7 @@ public class Vacation {
             inverseJoinColumns = @JoinColumn(name = "employee_id"))
     @EqualsAndHashCode.Exclude
     @ToString.Exclude
+    @JsonIgnore
     private Set<Employee> vacationEmployees;
 
     public Vacation() {
@@ -164,5 +166,21 @@ public class Vacation {
                 .ifPresent(
                         employee -> this.vacationEmployees.remove(employee)
                 );
+    }
+
+    @Override
+    public String toString() {
+        return "Vacation{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", description='" + description + '\'' +
+                ", country='" + country + '\'' +
+                ", city='" + city + '\'' +
+                ", vacationStartDate=" + vacationStartDate +
+                ", vacationEndDate=" + vacationEndDate +
+                ", price=" + price +
+                ", organizer=" + organizer +
+                ", vacationEmployees=" + vacationEmployees +
+                '}';
     }
 }

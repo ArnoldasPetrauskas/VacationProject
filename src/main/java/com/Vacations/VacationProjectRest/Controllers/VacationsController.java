@@ -1,7 +1,9 @@
 package com.Vacations.VacationProjectRest.Controllers;
 
 import com.Vacations.VacationProjectRest.Entities.Vacation;
+import com.Vacations.VacationProjectRest.Entities.Vacations;
 import com.Vacations.VacationProjectRest.Services.VacationService;
+import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -21,9 +23,9 @@ public class VacationsController {
     }
 
     @GetMapping("/vacations")
-    public ResponseEntity<List<Vacation>> vacations() {
+    public ResponseEntity<Vacations> vacations() {
         return new ResponseEntity<>(
-                vacationService.findAll(),
+                new Vacations(vacationService.findAll()),
                 HttpStatus.OK
         );
     }
@@ -34,9 +36,5 @@ public class VacationsController {
                 vacationService.findById(vacationId),
                 HttpStatus.OK
         );
-    }
-    @PostMapping("/vacations/vacation/new")
-    public ResponseEntity<HttpStatus> saveVacation(){
-        return new ResponseEntity<>(HttpStatus.OK);
     }
 }

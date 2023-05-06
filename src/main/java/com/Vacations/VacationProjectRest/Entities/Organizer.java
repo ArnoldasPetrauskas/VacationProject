@@ -1,5 +1,6 @@
 package com.Vacations.VacationProjectRest.Entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -21,7 +22,9 @@ public class Organizer {
     @NonNull
     @Column(nullable = false, unique = true, length = 30)
     private String name;
-
+    @JsonIgnore
+    @EqualsAndHashCode.Exclude
+    @ToString.Exclude
     @OneToMany(mappedBy = "organizer",
             fetch = FetchType.LAZY,
             cascade = CascadeType.ALL)

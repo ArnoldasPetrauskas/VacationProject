@@ -70,8 +70,9 @@ public class VacationsControllerTest {
     @Test
     void retrievesAllVacations(){
         assertEquals(
-                vacations.getVacations(),
+                vacations,
                 vacationsController.vacations().getBody());
+        assertEquals(vacationsController.vacations().getStatusCode(), HttpStatus.OK);
     }
 
     @Test

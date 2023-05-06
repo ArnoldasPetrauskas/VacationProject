@@ -15,12 +15,12 @@ public class Employee {
     private Integer id;
 
     @NonNull
-    private String username;
+    private String employeeName;
 
     @NonNull
     private String password;
 
     @NonNull
-    private String role = "USER";
+    private String role;
 
 }

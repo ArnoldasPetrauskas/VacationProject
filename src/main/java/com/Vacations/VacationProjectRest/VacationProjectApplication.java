@@ -32,7 +32,7 @@ public class VacationProjectApplication implements CommandLineRunner {
 	}
 	@Override
 	public void run(String... args) throws Exception {
-		populate();
+//		populate();
 	}
 
 
