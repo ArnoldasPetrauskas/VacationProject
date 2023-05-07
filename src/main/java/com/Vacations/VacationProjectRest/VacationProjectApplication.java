@@ -45,7 +45,7 @@ public class VacationProjectApplication implements CommandLineRunner {
 
     void populate() {
         List<Vacation> vacations = initVacations();
-        Set<Organizer> organizers = initOrganizers(vacations);;
+        Set<Organizer> organizers = initOrganizers(vacations);
         organizerService.saveAll(organizers);
         vacationService.saveAll(vacations);
     }
@@ -88,7 +88,7 @@ public class VacationProjectApplication implements CommandLineRunner {
         );
     }
 
-    private Set<Organizer> initOrganizers(List<Vacation> vacationList) {
+    private Set<Organizer> initOrganizers( List<Vacation> vacationList) {
         Organizer organizer1 = new Organizer("Testtour");
         organizer1.addVacation(vacationList.get(0));
 

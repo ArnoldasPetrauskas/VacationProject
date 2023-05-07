@@ -2,6 +2,7 @@ package com.Vacations.VacationProjectRest.Entities;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -46,14 +47,14 @@ public class Vacation {
     @NonNull
     private Double price;
 
+
     @JsonIgnore
     @ToString.Exclude
-    @EqualsAndHashCode.Exclude
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "organizer_id", nullable = false)
     private Organizer organizer;
 
-    @EqualsAndHashCode.Exclude
+
     @ToString.Exclude
     @JsonIgnore
     @ManyToMany

@@ -25,7 +25,7 @@ public class VacationsControllerTest {
         this.vacationsController = new VacationsController(new VacationService(vacationRepository));
     }
 
-    private List<Vacation> loadTestVacations() {
+    public List<Vacation> loadTestVacations() {
 
         Vacation vacation1 = new Vacation(
                 "Amazon",

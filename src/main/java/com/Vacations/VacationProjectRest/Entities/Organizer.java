@@ -26,9 +26,7 @@ public class Organizer {
     @NonNull
     @Column(nullable = false, unique = true, length = 30)
     private String name;
-    @EqualsAndHashCode.Exclude
-    @ToString.Exclude
-    @JsonIgnore
+
     @OneToMany(mappedBy = "organizer",
             fetch = FetchType.LAZY,
             cascade = CascadeType.ALL)
@@ -56,8 +54,8 @@ public class Organizer {
     }
 
     public void addVacation(Vacation vacation) {
-        vacations.add(vacation);
         vacation.setOrganizer(this);
+        vacations.add(vacation);
     }
 
 }

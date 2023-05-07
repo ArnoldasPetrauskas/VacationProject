@@ -1,20 +1,21 @@
 package com.Vacations.VacationProjectRest.Services;
 
+import com.Vacations.VacationProjectRest.Entities.Organizer;
 import com.Vacations.VacationProjectRest.Entities.Vacation;
+import com.Vacations.VacationProjectRest.Persistance.OrganizerRepository;
 import com.Vacations.VacationProjectRest.Persistance.VacationRepository;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
 @Service
 public class VacationService {
-
     private final VacationRepository vacationRepository;
 
     public VacationService(VacationRepository vacationRepository) {
         this.vacationRepository = vacationRepository;
     }
-
 
     public List<Vacation> findAll() {
         return vacationRepository.findAll();
@@ -26,7 +27,6 @@ public class VacationService {
     public void save(Vacation vacation){
         vacationRepository.save(vacation);
     }
-
     public void saveAll(List<Vacation> vacationList){
         vacationRepository.saveAll(vacationList);
     }
