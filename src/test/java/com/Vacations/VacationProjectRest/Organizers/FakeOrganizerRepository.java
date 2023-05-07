@@ -30,7 +30,7 @@ public class FakeOrganizerRepository implements OrganizerRepository {
     public Organizer findById(int id) {
         return organizers
                 .stream()
-                .filter(vacation -> vacation.getId() == id)
+                .filter(organizer -> organizer.getId() == id)
                 .findFirst()
                 .orElseThrow(() -> new IllegalArgumentException("Vacation not found by id: " + id));
     }

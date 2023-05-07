@@ -7,7 +7,9 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -55,14 +57,15 @@ public class Vacation {
     private Organizer organizer;
 
 
+    @EqualsAndHashCode.Exclude
     @ToString.Exclude
     @JsonIgnore
-    @ManyToMany
+    @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(
             name = "vacation_employees",
-            joinColumns = @JoinColumn(name = "vacation_id", referencedColumnName = "id"),
+            joinColumns = @JoinColumn(name = "vacation_id",referencedColumnName = "id"),
             inverseJoinColumns = @JoinColumn(name = "employee_id", referencedColumnName = "id"))
-    private Set<Employee> vacationEmployees = new HashSet<>();
+    private List<Employee> vacationEmployees = new ArrayList<>();
 
     public Vacation() {
     }
@@ -151,10 +154,9 @@ public class Vacation {
         this.organizer = organizer;
     }
 
-
     public void addEmployee(Employee employee) {
         vacationEmployees.add(employee);
-
+        employee.addVacation(this);
     }
 
     public void removeEmployee(int id) {

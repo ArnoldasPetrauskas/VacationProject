@@ -4,7 +4,9 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -30,7 +32,7 @@ public class Organizer {
     @OneToMany(mappedBy = "organizer",
             fetch = FetchType.LAZY,
             cascade = CascadeType.ALL)
-    private Set<Vacation> vacations = new HashSet<>();
+    private List<Vacation> vacations = new ArrayList<>();
 
 
     public Integer getId() {
@@ -49,7 +51,7 @@ public class Organizer {
         this.name = name;
     }
 
-    public Set<Vacation> getVacations() {
+    public List<Vacation> getVacations() {
         return vacations;
     }
 
