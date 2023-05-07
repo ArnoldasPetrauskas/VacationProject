@@ -8,12 +8,16 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-@AllArgsConstructor
-@NoArgsConstructor
-@RequiredArgsConstructor
-@Data
+@ToString
 @Table(name = "organizers")
 public class Organizer {
+
+    public Organizer() {
+    }
+
+    public Organizer(String name) {
+        this.name = name;
+    }
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,16 +26,38 @@ public class Organizer {
     @NonNull
     @Column(nullable = false, unique = true, length = 30)
     private String name;
-    @JsonIgnore
     @EqualsAndHashCode.Exclude
     @ToString.Exclude
+    @JsonIgnore
     @OneToMany(mappedBy = "organizer",
             fetch = FetchType.LAZY,
             cascade = CascadeType.ALL)
     private Set<Vacation> vacations = new HashSet<>();
 
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Set<Vacation> getVacations() {
+        return vacations;
+    }
+
     public void addVacation(Vacation vacation) {
         vacations.add(vacation);
         vacation.setOrganizer(this);
     }
+
 }

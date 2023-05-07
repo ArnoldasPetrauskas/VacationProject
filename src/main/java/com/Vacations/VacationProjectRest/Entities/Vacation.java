@@ -6,9 +6,11 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.LocalDate;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
+@ToString
 @Table(name = "vacations")
 public class Vacation {
 
@@ -43,6 +45,7 @@ public class Vacation {
     @Column
     @NonNull
     private Double price;
+
     @JsonIgnore
     @ToString.Exclude
     @EqualsAndHashCode.Exclude
@@ -50,20 +53,15 @@ public class Vacation {
     @JoinColumn(name = "organizer_id", nullable = false)
     private Organizer organizer;
 
-    @ManyToMany(
-            fetch = FetchType.LAZY,
-            cascade = {
-                    CascadeType.PERSIST,
-                    CascadeType.MERGE
-            })
-    @JoinTable(
-            name = "vacation_employees",
-            joinColumns = @JoinColumn(name = "vacation_id"),
-            inverseJoinColumns = @JoinColumn(name = "employee_id"))
     @EqualsAndHashCode.Exclude
     @ToString.Exclude
     @JsonIgnore
-    private Set<Employee> vacationEmployees;
+    @ManyToMany
+    @JoinTable(
+            name = "vacation_employees",
+            joinColumns = @JoinColumn(name = "vacation_id", referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(name = "employee_id", referencedColumnName = "id"))
+    private Set<Employee> vacationEmployees = new HashSet<>();
 
     public Vacation() {
     }
@@ -152,8 +150,10 @@ public class Vacation {
         this.organizer = organizer;
     }
 
+
     public void addEmployee(Employee employee) {
         vacationEmployees.add(employee);
+
     }
 
     public void removeEmployee(int id) {
@@ -168,19 +168,4 @@ public class Vacation {
                 );
     }
 
-    @Override
-    public String toString() {
-        return "Vacation{" +
-                "id=" + id +
-                ", title='" + title + '\'' +
-                ", description='" + description + '\'' +
-                ", country='" + country + '\'' +
-                ", city='" + city + '\'' +
-                ", vacationStartDate=" + vacationStartDate +
-                ", vacationEndDate=" + vacationEndDate +
-                ", price=" + price +
-                ", organizer=" + organizer +
-                ", vacationEmployees=" + vacationEmployees +
-                '}';
-    }
 }
