@@ -54,6 +54,7 @@ public class Vacation {
     @ToString.Exclude
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "organizer_id", nullable = false)
+    @NonNull
     private Organizer organizer;
 
 
@@ -152,6 +153,14 @@ public class Vacation {
 
     public void setOrganizer(Organizer organizer) {
         this.organizer = organizer;
+    }
+
+    public List<Employee> getVacationEmployees() {
+        return vacationEmployees;
+    }
+
+    public void setVacationEmployees(List<Employee> vacationEmployees) {
+        this.vacationEmployees = vacationEmployees;
     }
 
     public void addEmployee(Employee employee) {
